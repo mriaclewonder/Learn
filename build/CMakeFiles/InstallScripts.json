@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"D:/Code/git/Learn/build/cmake_install.cmake",
-		"D:/Code/git/Learn/build/01_week/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
