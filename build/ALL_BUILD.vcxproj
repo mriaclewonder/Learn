@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x86</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|win32">
+      <Configuration>Debug</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|win32">
+      <Configuration>Release</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{83C8E1EF-0ADD-3D33-82DB-F71F2795ED8B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Code\git\Learn\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Building Custom Rule D:/Code/git/Learn/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">setlocal
+D:\Env\CMake\bin\cmake.exe -SD:/Code/git/Learn -BD:/Code/git/Learn/build --check-stamp-file D:/Code/git/Learn/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeCCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeCXXCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeRCCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeSystem.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCXXInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeGenericSystem.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeRCInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-Initialize.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">D:\Code\git\Learn\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Building Custom Rule D:/Code/git/Learn/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|win32'">setlocal
+D:\Env\CMake\bin\cmake.exe -SD:/Code/git/Learn -BD:/Code/git/Learn/build --check-stamp-file D:/Code/git/Learn/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeCCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeCXXCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeRCCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeSystem.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCXXInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeGenericSystem.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeRCInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-Initialize.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">D:\Code\git\Learn\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Building Custom Rule D:/Code/git/Learn/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">setlocal
+D:\Env\CMake\bin\cmake.exe -SD:/Code/git/Learn -BD:/Code/git/Learn/build --check-stamp-file D:/Code/git/Learn/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeCCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeCXXCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeRCCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeSystem.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCXXInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeGenericSystem.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeRCInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-Initialize.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">D:\Code\git\Learn\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Building Custom Rule D:/Code/git/Learn/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">setlocal
+D:\Env\CMake\bin\cmake.exe -SD:/Code/git/Learn -BD:/Code/git/Learn/build --check-stamp-file D:/Code/git/Learn/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeCCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeCXXCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeRCCompiler.cmake;D:\Code\git\Learn\build\CMakeFiles\4.1.0-rc1\CMakeSystem.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCXXInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeCommonLanguageInclude.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeGenericSystem.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeInitializeConfigs.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeLanguageInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeRCInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\CMakeSystemSpecificInitialize.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Compiler\MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCXXLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Internal\CMakeCommonLinkerInformation.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Linker\MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Linker\Windows-MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-Initialize.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-C.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows-MSVC.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\Windows.cmake;D:\Env\CMake\share\cmake-4.1\Modules\Platform\WindowsPaths.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">D:\Code\git\Learn\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="D:\Code\git\Learn\build\ZERO_CHECK.vcxproj">
+      <Project>{08CCBC33-E75E-343A-82D1-AD60B2E2A7BE}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Code\git\Learn\build\01_week\const_01.vcxproj">
+      <Project>{0FF76503-984C-3F45-83B9-FA532C56E2C1}</Project>
+      <Name>const_01</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
