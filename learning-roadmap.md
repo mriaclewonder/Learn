@@ -10,16 +10,42 @@
 
 ---
 
+## 摸底诊断（2026-08）与补缺优先级
+
+### 诊断结论
+- 2026-08-24 摸底测试：阶段一、二属结构性薄弱，约 80% 知识点未掌握或理解有误
+- 典型错误：const 指针语义答反、dynamic_cast 方向反、虚析构机制理解错误
+- 现状：会用 API，不懂底层机制（与维护型工作经历相符）
+- 行动：阶段一、二按 P0 → P1 → P2 顺序补缺，不按原周次顺序推进
+
+### P0 地基（先补，不牢后面全不稳）
+- 指针 / const / 引用 / 值语义（const 指针语义摸底时答反）
+- 类型转换：static_cast / dynamic_cast / const_cast / reinterpret_cast
+- 智能指针：unique_ptr / shared_ptr / weak_ptr / enable_shared_from_this
+- 拷贝与移动语义、三五法则
+
+### P1 日常高频
+- 虚函数机制与虚析构
+- 编译链接模型（为什么模板必须放头文件）
+- STL 算法与 remove/erase idiom
+- Lambda 与 Qt 信号槽安全
+
+### P2 进阶
+- 异常与异常安全
+- 模板：SFINAE / CRTP / 可变参数
+
+---
+
 ## 阶段一：C++ 类型系统与语言深度 —— 第 1~10 周
 
-### 第 1 周：const 正确性
+### 第 1 周：const 正确性 [P0]
 - const 修饰变量：const int*、int* const、const int* const
 - const 成员函数与 mutable
 - 逻辑 const 与物理 const
 - 顶层 const 与底层 const
 - constexpr 变量与函数基础
 
-### 第 2 周：类型转换与 explicit
+### 第 2 周：类型转换与 explicit [P0]
 - static_cast：编译期转换、父类子类互转
 - dynamic_cast：运行期多态转换、需要虚函数
 - const_cast：移除 const/volatile
@@ -27,7 +53,7 @@
 - explicit 关键字：禁止隐式转换
 - C 风格转换的缺陷
 
-### 第 3 周：运算符重载
+### 第 3 周：运算符重载 [P1]
 - 哪些运算符可以/不可以重载
 - 算术运算符：成员函数 vs 友元函数
 - 比较运算符、赋值运算符、copy-and-swap idiom
@@ -35,7 +61,7 @@
 - 类型转换运算符 explicit operator bool()
 - 不应该重载的：&& || ，（短路逻辑丢失）
 
-### 第 4 周：智能指针
+### 第 4 周：智能指针 [P0]
 - unique_ptr：独占所有权、make_unique、自定义 deleter
 - shared_ptr：引用计数、make_shared 内存优化
 - weak_ptr：打破循环引用、lock()、expired()
@@ -44,7 +70,7 @@
 - shared_ptr 的 aliasing constructor
 - Qt 混用：QPointer（weak ptr）、QSharedPointer
 
-### 第 5 周：移动语义
+### 第 5 周：移动语义 [P0]
 - 左值 vs 右值的本质
 - std::move 只是类型转换
 - 移动构造/赋值的手写规则
@@ -54,7 +80,7 @@
 - 三五法则（Rule of Five）与零法则（Rule of Zero）
 - copy-and-swap idiom
 
-### 第 6 周：Lambda 与 std::function
+### 第 6 周：Lambda 与 std::function [P1]
 - Lambda 完整语法：[capture](params) mutable -> ret { body }
 - 捕获列表：= & this *this init capture
 - 泛型 lambda：[](auto x) {}
@@ -63,7 +89,7 @@
 - std::bind 的占位符 _1 _2 与陷阱
 - Qt 信号槽中的 lambda：生命周期安全、contextObject 参数
 
-### 第 7 周：STL 算法
+### 第 7 周：STL 算法 [P1]
 - 非修改类：find、find_if、count、count_if、all_of、any_of、none_of
 - 修改类：copy、copy_if、transform、replace、remove+erase idiom
 - 排序与分区：sort、stable_sort、partial_sort、nth_element、partition
@@ -73,7 +99,7 @@
 - for_each vs range-based for vs 算法
 - std::clamp、std::minmax、std::sample
 
-### 第 8 周：编译链接模型
+### 第 8 周：编译链接模型 [P1]
 - 翻译单元：.cpp 到目标文件的全过程
 - ODR 规则：一个定义规则
 - 头文件守卫：#ifndef vs #pragma once
@@ -82,7 +108,7 @@
 - extern template：显式实例化
 - 链接阶段：name mangling、符号解析、静态/动态链接
 
-### 第 9 周：虚函数底层机制
+### 第 9 周：虚函数底层机制 [P1]
 - vtable 与 vptr 的内存布局
 - 虚函数调用开销：两次间接跳转
 - 去虚拟化（devirtualization）
@@ -92,7 +118,7 @@
 - 虚继承：菱形继承问题
 - 用 godbolt.org 观察虚表汇编
 
-### 第 10 周：C++ 异常安全
+### 第 10 周：C++ 异常安全 [P2]
 - 三个保证级别：no-throw、strong、basic
 - noexcept 规范：声明 + noexcept() 操作符
 - 构造函数中抛异常的后果
@@ -102,7 +128,7 @@
 
 ---
 
-## 阶段二：C++ 模板系统学习 —— 第 11~15 周
+## 阶段二：C++ 模板系统学习 —— 第 11~15 周 [P2]
 
 ### 第 11 周：函数模板基础
 - template typename T 语法
