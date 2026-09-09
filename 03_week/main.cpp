@@ -155,6 +155,34 @@ namespace week_03
         assert(std::strcmp(c.c_str(), "original") == 0);
         std::cout << "[3] strong exception safety OK: c = " << c.c_str() << "\n";
     }
+
+    struct Bad
+    {
+        bool _vaild;
+
+        operator bool() const { return _vaild; }
+    };
+
+    struct Bad1
+    {
+        bool _vaild;
+
+        explicit operator bool() const { return _vaild; }
+    };
+
+    void test5()
+    {
+        Bad b;
+        int x = b + 1;
+
+        int y = 1 + b;
+        std::cout << "x " << x << " y " << y << std::endl;
+
+        Bad1 b1;
+        //  int x = b1 + 1; // error禁止
+
+        bool b2 = static_cast<bool>(b1);
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -163,5 +191,6 @@ int main(int argc, char const *argv[])
     week_03::test1(); // 测试成员函数
     week_03::test3(); // 测试显示构造
     week_03::test4(); // 测试copy-and-swap
+    week_03::test5(); // 测试类型转换运算符 explicit operator bool()
     return 0;
 }
