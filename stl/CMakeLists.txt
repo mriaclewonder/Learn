@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION FATAL_ERROR 3.10)
+cmake_minimum_required(VERSION 3.12)
 
 project(stl)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "{CMAKE_SOURCE_DIR}/bin/")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/stl/")
 
-file(GLOB SOURCE "*.cpp")
+file(GLOB SOURCES "*.cpp")
 
 foreach(SOURCE ${SOURCES})
     get_filename_component(TARGET_NAME ${SOURCE} NAME_WE)
