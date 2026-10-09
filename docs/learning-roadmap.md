@@ -6,33 +6,7 @@
 - 目标：上海中高级 C++/Qt 岗位，涨薪
 - 平台：Windows 为主
 - 日均学习时间：2 小时
-- 总周期：约 67 周（12~14 个月）
-
----
-
-## 摸底诊断（2026-08）与补缺优先级
-
-### 诊断结论
-- 2026-08-24 摸底测试：阶段一、二属结构性薄弱，约 80% 知识点未掌握或理解有误
-- 典型错误：const 指针语义答反、dynamic_cast 方向反、虚析构机制理解错误
-- 现状：会用 API，不懂底层机制（与维护型工作经历相符）
-- 行动：阶段一、二按 P0 → P1 → P2 顺序补缺，不按原周次顺序推进
-
-### P0 地基（先补，不牢后面全不稳）
-- 指针 / const / 引用 / 值语义（const 指针语义摸底时答反）
-- 类型转换：static_cast / dynamic_cast / const_cast / reinterpret_cast
-- 智能指针：unique_ptr / shared_ptr / weak_ptr / enable_shared_from_this
-- 拷贝与移动语义、三五法则
-
-### P1 日常高频
-- 虚函数机制与虚析构
-- 编译链接模型（为什么模板必须放头文件）
-- STL 算法与 remove/erase idiom
-- Lambda 与 Qt 信号槽安全
-
-### P2 进阶
-- 异常与异常安全
-- 模板：SFINAE / CRTP / 可变参数
+- 总周期：约 63 周（12~14 个月）
 
 ---
 
@@ -89,15 +63,12 @@
 - std::bind 的占位符 _1 _2 与陷阱
 - Qt 信号槽中的 lambda：生命周期安全、contextObject 参数
 
-### 第 7 周：STL 算法 [P1]
-- 非修改类：find、find_if、count、count_if、all_of、any_of、none_of
-- 修改类：copy、copy_if、transform、replace、remove+erase idiom
-- 排序与分区：sort、stable_sort、partial_sort、nth_element、partition
-- 数值类：accumulate、inner_product、partial_sum
-- 集合类：set_union、set_difference
-- 堆类：make_heap、push_heap、pop_heap、std::priority_queue
-- for_each vs range-based for vs 算法
-- std::clamp、std::minmax、std::sample
+### 第 7 周：STL 源码剖析 [P1]
+- 空间配置器（第 2 章）：new 的双层开销与内存碎片；SGI 两级配置器（>128B 走一级 malloc/free，≤128B 走二级 free-list 内存池）；refill/chunk 分配；与 std::allocator、placement new、::operator new 的关系
+- 迭代器与 traits（第 3 章）：五类迭代器（输入/输出/前向/双向/随机访问）；iterator_traits 的五个 associated types；偏特化推导与原生指针特化；iterator_category 的 tag dispatch；__type_traits 与 POD/memcpy 优化；迭代器失效规则
+- 序列式容器（第 4 章）：vector 扩容策略与均摊 O(1)；list 双向链表与 splice；deque 分段连续与中控数组；stack/queue 配接器；heap 与 priority_queue
+- 关联式容器（第 5 章）：RB-tree 平衡规则与增删查；set/map/multiset/multimap；hashtable 开链法与 rehash；unordered_* 与负载因子；顺序 vs 关联容器选型
+- 验证：对 std::vector/std::map 按 F12 读本地 MSVC STL 源码；配侯捷《STL 源码剖析》逐章对照（见 tutorial-project-roadmap.md）
 
 ### 第 8 周：编译链接模型 [P1]
 - 翻译单元：.cpp 到目标文件的全过程
@@ -199,7 +170,7 @@
 
 ---
 
-## 阶段四：多线程与并发 —— 第 19~26 周
+## 阶段四：多线程与并发 —— 第 19~25 周
 
 ### 第 19 周：线程基础
 - std::thread 创建与生命周期
@@ -262,38 +233,32 @@
 - QMutex、QMutexLocker、QReadWriteLock、QWaitCondition
 - GUI 线程规则：UI 操作必须在主线程
 
-### 第 26 周：并发排查与性能分析
-- ThreadSanitizer（TSan）
-- perf / VTune：锁争用热点分析
-- 锁的粒度：粗粒度 vs 细粒度
-- 减少锁争用：读写锁、数据分片、per-thread 数据、double buffering
-
 ---
 
-## 阶段五：操作系统基础 —— 第 27~30 周
+## 阶段五：操作系统基础 —— 第 26~29 周
 
-### 第 27 周：进程与线程底层
+### 第 26 周：进程与线程底层
 - 进程 vs 线程本质区别
 - 虚拟内存：页表、TLB、缺页中断
 - 用户态 vs 内核态：系统调用开销
 - 上下文切换的具体开销
 - IPC 通信方式：管道、共享内存、消息队列、Socket
 
-### 第 28 周：内存管理底层
+### 第 27 周：内存管理底层
 - 虚拟地址空间布局：代码段、数据段、BSS、堆、栈、mmap
 - malloc/free 底层：ptmalloc、brk vs mmap
 - 内存碎片：内部 vs 外部
 - 栈帧结构：ebp/esp
 - TCMalloc/jemalloc 简介
 
-### 第 29 周：锁的底层实现
+### 第 28 周：锁的底层实现
 - futex（Linux）、Critical Section（Windows）
 - 自旋锁 vs 互斥锁对比
 - 信号量内核级实现
 - 读写锁饥饿问题
 - 缓存一致性协议 MESI
 
-### 第 30 周：I/O 模型
+### 第 29 周：I/O 模型
 - 阻塞 I/O vs 非阻塞 I/O
 - 五种 I/O 模型
 - select、poll、epoll 原理与优缺点
@@ -302,9 +267,9 @@
 
 ---
 
-## 阶段六：内存管理与调试 —— 第 31~34 周
+## 阶段六：内存管理与调试 —— 第 30~33 周
 
-### 第 31 周：C++ 内存模型与 RAII
+### 第 30 周：C++ 内存模型与 RAII
 - C++ 对象生命周期完整调用链
 - RAII 原则：谁分配谁释放
 - placement new
@@ -313,20 +278,20 @@
 - 空基类优化 EBO
 - 虚函数表内存布局
 
-### 第 32 周：内存泄漏检测
+### 第 31 周：内存泄漏检测
 - AddressSanitizer（ASan）：堆溢出、栈溢出、use-after-free、double-free
 - Valgrind/Memcheck（Linux）
 - Windows CRT 内存泄漏检测：_CrtSetDbgFlag
 - shared_ptr 循环引用检测
 
-### 第 33 周：高级调试技巧
+### 第 32 周：高级调试技巧
 - GDB：条件断点、watchpoint、catch throw、core dump
 - WinDbg：符号加载、dump 分析、!analyze -v
 - 多线程调试：查看所有线程、切换上下文、检测死锁
 - 性能断点：perf record / perf report / 火焰图
 - strace/ltrace（Linux）
 
-### 第 34 周：Qt 内存管理专讲
+### 第 33 周：Qt 内存管理专讲
 - QObject 父子树机制：setParent、析构顺序、findChild/findChildren
 - deleteLater() 原理与 delete 的区别
 - QWidget 特殊销毁：WA_DeleteOnClose
@@ -338,9 +303,9 @@
 
 ---
 
-## 阶段七：Qt 深入 —— 第 35~40 周
+## 阶段七：Qt 深入 —— 第 34~39 周
 
-### 第 35 周：Qt MOC 原理与信号槽底层
+### 第 34 周：Qt MOC 原理与信号槽底层
 - MOC 工作流程：解析头文件、生成 moc_*.cpp
 - Q_OBJECT 宏展开：staticMetaObject、metaObject()、qt_metacall()
 - 信号槽底层：信号 = 普通函数 + QMetaObject::activate()
@@ -348,7 +313,7 @@
 - QueuedConnection 内部实现：事件队列 + 参数拷贝
 - QMetaObject::Connection 与 disconnect()
 
-### 第 36 周：Qt 事件系统
+### 第 35 周：Qt 事件系统
 - QEventLoop 原理：processEvents()、exec()
 - 事件 vs 信号的区别
 - QObject::event() 分发函数
@@ -358,7 +323,7 @@
 - paintEvent、resizeEvent、mousePressEvent、keyPressEvent 调用链
 - 嵌套事件循环的使用场景与风险
 
-### 第 37 周：Qt Model/View 框架
+### 第 36 周：Qt Model/View 框架
 - 框架结构：Model、View、Delegate
 - QAbstractItemModel 纯虚接口：index()、parent()、rowCount()、columnCount()、data()
 - QAbstractListModel：只需 rowCount + data
@@ -369,7 +334,7 @@
 - beginInsertRows/endInsertRows 通知 View 数据变更
 - Model/View 中的线程安全注意事项
 
-### 第 38 周：Qt 容器 vs STL 容器
+### 第 37 周：Qt 容器 vs STL 容器
 - QList vs std::vector 对比
 - QMap vs std::map vs QHash vs std::unordered_map 性能对比
 - Qt 隐式共享 COW 实现原理：QSharedData + QSharedDataPointer
@@ -378,7 +343,7 @@
 - const 成员函数不触发 detach
 - Q_DECLARE_TYPEINFO 宏
 
-### 第 39 周：QVariant 与 Qt 类型系统
+### 第 38 周：QVariant 与 Qt 类型系统
 - QVariant：内部用 union + type tag
 - QVariant::canConvert T 与 value T
 - Q_DECLARE_METATYPE 宏
@@ -387,7 +352,7 @@
 - Q_PROPERTY 宏与属性系统
 - QObject::setProperty() / property() 动态属性
 
-### 第 40 周：Qt 实用功能精讲
+### 第 39 周：Qt 实用功能精讲
 - QTimer：singleShot、start/stop、定时器类型
 - QProcess：启动外部程序、start() vs execute()、读写标准 IO
 - 文件操作：QFile/QDir/QFileInfo
@@ -399,34 +364,17 @@
 
 ---
 
-## 阶段八：设计模式与架构设计 —— 第 41~43 周
+## 阶段八：设计模式 —— 第 40 周
 
-### 第 41 周：创建型模式
-- 工厂方法模式
-- 抽象工厂模式
+### 第 40 周：设计模式（单例 + 工厂）
 - 单例模式：Meyers' Singleton（C++11 线程安全）
-- 建造者模式：链式调用
-- 原型模式
-
-### 第 42 周：行为型模式
-- 策略模式：替代 if-else/switch
-- 观察者模式：Qt 信号槽的底层思想
-- 命令模式：QUndoCommand/QUndoStack
-- 状态模式：QStateMachine 框架
-
-### 第 43 周：结构型模式与架构原则
-- PIMPL（编译防火墙）
-- 适配器模式
-- 装饰器模式
-- 代理模式
-- SOLID 原则：单一职责、开闭原则、里氏替换、接口隔离、依赖倒置
-- CRTP 应用模式回顾（编译期多态）
+- 工厂模式：工厂方法模式、抽象工厂模式
 
 ---
 
-## 阶段九：硬件通信 —— 第 44~45 周
+## 阶段九：硬件通信 —— 第 41~42 周
 
-### 第 44 周：QSerialPort 串口通信
+### 第 41 周：QSerialPort 串口通信
 - QSerialPortInfo::availablePorts() 查找串口
 - 串口配置：波特率、数据位、校验位、停止位、流控
 - 异步读写：readyRead() 信号、超时处理
@@ -435,16 +383,16 @@
 - volatile 关键字：硬件寄存器映射
 - volatile != atomic：不保证多线程安全
 
-### 第 45 周：工业通信协议概要
+### 第 42 周：工业通信协议概要
 - Modbus RTU / Modbus TCP 组件架构：主站/从站、功能码、寄存器地址
 - CAN 总线基础：帧格式、CAN ID、差分信号
 - 用 Wireshark 抓包分析 Modbus TCP 报文
 
 ---
 
-## 阶段十：网络编程 —— 第 46~49 周
+## 阶段十：网络编程 —— 第 43~46 周
 
-### 第 46 周：网络基础与 TCP/UDP
+### 第 43 周：网络基础与 TCP/UDP
 - OSI 七层模型 vs TCP/IP 四层模型
 - IP 协议基础：IP 地址、子网掩码、路由
 - TCP 详解：三次握手、四次挥手、状态机
@@ -452,7 +400,7 @@
 - TIME_WAIT 状态的意义
 - UDP：无连接、不可靠、适用场景
 
-### 第 47 周：Socket 编程
+### 第 44 周：Socket 编程
 - Socket API：socket()、bind()、listen()、accept()、connect()、send()/recv()
 - 阻塞 vs 非阻塞 Socket
 - Socket 选项：SO_REUSEADDR、SO_KEEPALIVE、TCP_NODELAY
@@ -460,7 +408,7 @@
 - 网络字节序：htonl/htons/ntohl/ntohs
 - Qt Socket：QTcpSocket、QTcpServer、QUdpSocket
 
-### 第 48 周：HTTP 协议与应用层
+### 第 45 周：HTTP 协议与应用层
 - HTTP/1.1 请求/响应格式
 - GET/POST/PUT/DELETE 方法
 - 状态码分类
@@ -468,7 +416,7 @@
 - QNetworkAccessManager、QNetworkRequest、QNetworkReply
 - WebSocket 与 QWebSocket
 
-### 第 49 周：I/O 多路复用与高性能网络
+### 第 46 周：I/O 多路复用与高性能网络
 - select 的局限：fd_set 大小、O(n) 遍历
 - poll：无 fd 数量限制
 - epoll（Linux）：epoll_create/epoll_ctl/epoll_wait、O(1) 就绪通知
@@ -478,9 +426,9 @@
 
 ---
 
-## 阶段十一：数据库基础 —— 第 50~51 周
+## 阶段十一：数据库基础 —— 第 47~48 周
 
-### 第 50 周：SQL 基础
+### 第 47 周：SQL 基础
 - 核心语句：SELECT、INSERT、UPDATE、DELETE
 - 表设计：主键、外键、索引、约束
 - 连接查询：INNER/LEFT/RIGHT/FULL JOIN
@@ -490,7 +438,7 @@
 - 隔离级别：读未提交/读已提交/可重复读/串行化
 - 索引原理：B+Tree、聚簇索引 vs 非聚簇索引、最左前缀原则
 
-### 第 51 周：Qt 数据库编程
+### 第 48 周：Qt 数据库编程
 - Qt SQL 模块：QSqlDatabase、QSqlQuery、QSqlTableModel
 - connect + QSQLITE
 - QSqlQuery::exec()、prepare() + bindValue() 防注入
@@ -501,9 +449,9 @@
 
 ---
 
-## 阶段十二：Qt 图形与渲染 —— 第 52~53 周
+## 阶段十二：Qt 图形与渲染 —— 第 49 周
 
-### 第 52 周：自定义绘制与 QGraphicsView
+### 第 49 周：自定义绘制与 QGraphicsView
 - QPainter 绘制模型：paint device
 - 基本绘制：直线、矩形、椭圆、多边形、文字、QPainterPath
 - QPen 与 QBrush：渐变（线性/辐射/锥形）
@@ -514,20 +462,11 @@
 - 图元交互：选中、拖拽、碰撞检测
 - 坐标系统：逻辑坐标 vs 物理坐标、DPI 缩放
 
-### 第 53 周：OpenGL 基础与 Qt 集成
-- 渲染管线：顶点着色器、图元装配、光栅化、片段着色器
-- VAO/VBO/EBO
-- 变换矩阵：模型/视图/投影、glm 库
-- QOpenGLWidget、QOpenGLFunctions
-- QPainter 与 OpenGL 混合绘制
-- 基础纹理映射
-- learnopengl.com 教程
-
 ---
 
-## 阶段十三：软件测试 —— 第 54~55 周
+## 阶段十三：软件测试 —— 第 50~51 周
 
-### 第 54 周：单元测试基础
+### 第 50 周：单元测试基础
 - GoogleTest：TEST() 宏、EXPECT_EQ/ASSERT_EQ
 - Test Fixture TEST_F()、SetUp()/TearDown()
 - 死亡测试 EXPECT_DEATH
@@ -535,7 +474,7 @@
 - 测试覆盖率：gcov/lcov
 - QTest：QTEST_MAIN、QTest::keyClick、QTest::mouseClick
 
-### 第 55 周：测试实践与 TDD
+### 第 51 周：测试实践与 TDD
 - TDD 三步骤：Red、Green、Refactor
 - TDD 价值与局限
 - 什么样的代码难以测试
@@ -544,9 +483,9 @@
 
 ---
 
-## 阶段十四：日志系统 —— 第 56~57 周
+## 阶段十四：日志系统 —— 第 52~53 周
 
-### 第 56 周：日志系统设计
+### 第 52 周：日志系统设计
 - 日志级别：TRACE/DEBUG/INFO/WARN/ERROR/FATAL
 - 日志内容：时间戳、线程 ID、级别、文件/行号、消息体
 - 同步日志 vs 异步日志
@@ -556,7 +495,7 @@
 - qInstallMessageHandler 拦截 Qt 日志
 - spdlog 简要了解
 
-### 第 57 周：日志库完善
+### 第 53 周：日志库完善
 - 日志格式化：自定义 pattern
 - 多 sink：控制台 + 文件
 - 性能 benchmark
@@ -564,15 +503,15 @@
 
 ---
 
-## 阶段十五：序列化与配置管理 —— 第 58~59 周
+## 阶段十五：序列化与配置管理 —— 第 54~55 周
 
-### 第 58 周：JSON 与 XML
+### 第 54 周：JSON 与 XML
 - QJsonDocument：fromJson() / toJson()
 - QJsonObject/QJsonArray 操作
 - Qt XML：QDomDocument DOM 方式
 - nlohmann/json 了解
 
-### 第 59 周：二进制序列化与配置管理
+### 第 55 周：二进制序列化与配置管理
 - QDataStream：二进制序列化、版本号管理
 - QByteArray 二进制协议解析
 - QBuffer：QByteArray 模拟 I/O
@@ -583,19 +522,19 @@
 
 ---
 
-## 阶段十六：性能优化 —— 第 60~62 周
+## 阶段十六：性能优化 —— 第 56~58 周
 
-### 第 60 周：性能测试与基准
+### 第 56 周：性能测试与基准
 - Google Benchmark：BENCHMARK()、参数化测试
 - 对比测试：std::vector vs QVector、QStringBuilder、STL 算法
 
-### 第 61 周：性能分析工具
+### 第 57 周：性能分析工具
 - Visual Studio 性能探查器
 - Very Sleepy、VTune（Windows）
 - perf（Linux）：record/report/火焰图
 - 定位热点：自顶向下法、二分法
 
-### 第 62 周：常见性能优化策略
+### 第 58 周：常见性能优化策略
 - 缓存友好：数据局部性、字段重排、false sharing 对齐
 - 减少内存分配：对象池、预分配 reserve()、string_view
 - 减少拷贝：移动语义、RVO、const 引用
@@ -604,9 +543,9 @@
 
 ---
 
-## 阶段十七：编译构建与工程化 —— 第 63~66 周
+## 阶段十七：编译构建与工程化 —— 第 59~62 周
 
-### 第 63 周：CMake 精通
+### 第 59 周：CMake 精通
 - 核心语法：变量、条件、循环、函数
 - add_executable、add_library
 - target_include_directories、target_link_libraries
@@ -616,21 +555,21 @@
 - Qt 集成：AUTOMOC、AUTOUIC、AUTORCC
 - 跨平台构建
 
-### 第 64 周：CMake 进阶
+### 第 60 周：CMake 进阶
 - CMake Presets（CMakePresets.json）
 - FetchContent：自动下载依赖
 - CPack：打包生成安装包
 - Generator expressions
 - CTest + GoogleTest 集成
 
-### 第 65 周：静态分析与代码质量
+### 第 61 周：静态分析与代码质量
 - clang-tidy 集成 CMake
 - clang-format + .clang-format 配置
 - 代码覆盖率：gcov/lcov
 - CI 基础：GitHub Actions / GitLab CI
 - Sanitizers：ASan、TSan、UBSan
 
-### 第 66 周：大型工程模块拆分
+### 第 62 周：大型工程模块拆分
 - 按功能划分目录、每个模块一个 CMakeLists.txt
 - 接口层设计：纯虚接口、DLL 导出符号
 - 循环依赖解法：提取公共接口、依赖倒置、回调接口
@@ -639,7 +578,7 @@
 
 ---
 
-## 阶段十八：Git 进阶 —— 第 67 周
+## 阶段十八：Git 进阶 —— 第 63 周
 
 - Git 内部原理：blob、tree、commit、tag、HEAD
 - 分支策略：Git Flow、Trunk-Based Development
@@ -713,26 +652,3 @@
 - learnopengl.com（OpenGL 入门）
 - godbolt.org（编译器汇编分析）
 
----
-
-## 求职策略
-
-### 目标公司分级
-- S 级自动驾驶/量化：蔚来、小鹏、地平线、量化私募（30~60k+）
-- A 级工业软件/EDA：华大九天、芯华章、合见工软（25~40k）
-- A 级半导体测试设备：中微、盛美、华峰测控（22~35k）
-- B 级外资工业/医疗：西门子、蔡司、罗氏、美敦力（20~35k）
-- C 级传统软件公司：万得、恒生电子、泛微（18~28k）
-
-### 投递节奏
-- 现在 ~ 第 26 周：不投简历，全力学习，完成线程池项目
-- 第 26 周后：更新简历和 GitHub，投 C 类公司练手
-- 第 43 周后：投 B 类/A 类公司
-- 第 53 周后：投 S 类公司（如准备好）
-
-### 简历核心关键词
-- C++17、多线程并发、线程池、STL 算法、atomic/lock-free
-- Qt Widgets、CMake、设计模式、QThread、智能指针
-- 条件变量、内存管理、ASan/TSan
-- 自定义控件、SQLite、TCP/UDP
-- 测试系统开发
