@@ -1,4 +1,14 @@
-build/*
-bin/*
-cmake-build-debug/*
-.idea/*
+# 构建输出目录
+/build/
+/bin/
+/cmake-build-*/
+
+# IDE
+/.idea/
+
+# 编译产物
+*.exe
+*.obj
+*.o
+*.pdb
+*.ilk
