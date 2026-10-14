@@ -1,6 +1,7 @@
 #include <iostream>
 #include <type_traits>
 
+#include <vector>
 namespace week_05
 {
     struct A // 移动构造 noexcept，可拷贝
@@ -37,10 +38,40 @@ namespace week_05
         static_assert(noexcept(A(std::declval<A &&>())));
         static_assert(!noexcept(B(std::declval<B &&>())));
     }
+
+    struct D
+    {
+    public:
+        D() = default;
+        D(const D &) { std::cout << "D copy\n"; }
+        D(D &&) noexcept { std::cout << "D move\n"; }
+    };
+
+    struct E
+    {
+    public:
+        E() = default;
+        E(const E &) { std::cout << "E copy\n"; }
+        E(E &&) noexcept(false) { std::cout << "E move\n"; }
+    };
+
+    void test_dynamic_noexcept()
+    {
+        // 运行期验证
+        std::vector<D> d;
+        d.reserve(1);
+        d.emplace_back();
+        d.emplace_back();
+        std::vector<E> e;
+        e.reserve(1);
+        e.emplace_back();
+        e.emplace_back();
+    }
 }
 
 int main(int argc, char const *argv[])
 {
     week_05::test_static_assert();
+    week_05::test_dynamic_noexcept();
     return 0;
 }
